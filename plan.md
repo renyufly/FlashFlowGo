@@ -6,10 +6,10 @@
 
 | Field | Value |
 | --- | --- |
-| Current Phase | Phase 0 — Repository & Development Baseline |
-| Completed Tasks | 0 |
+| Current Phase | Phase 1 — Domain Contracts & Persistence Foundation |
+| Completed Tasks | 7 |
 | Total Tasks | 97 |
-| Current Focus | 0.1 固化工具链、版本与架构决策基线 |
+| Current Focus | 1.1 稳定领域词汇、实体与状态机 |
 | Blockers | None；影响后期部署与真实支付集成的问题记录在 Open Questions，不阻塞本地 MVP |
 | Last Updated | 2026-08-21 |
 
@@ -271,13 +271,13 @@ None。
 
 **Tasks**
 
-- [ ] **0.1 Toolchain and decision baseline** — 确认 module path，固定 Go/Node/pnpm、PostgreSQL/Redis/Kafka、sqlc、migration、buf/protoc、golangci-lint、k6 版本；创建 `go.mod`、`.tool-versions` 或等价版本文件及 `docs/adr/0001-*`。验证：全新环境能按文档安装/检查版本。
-- [ ] **0.2 Repository skeleton** — 按 Target Repository Structure 创建必要目录与最小 package（不提前创建无内容微服务），添加 `.gitignore`、`.editorconfig`、版权头/贡献约定。验证：目录职责与 imports 不形成循环依赖。
-- [ ] **0.3 Configuration contract** — 在 `internal/platform/config` 实现强类型环境配置、默认值和启动校验，创建 `.env.example`；区分必填 Secret 与非敏感参数。测试缺失、非法 duration/URL、Secret 脱敏。
-- [ ] **0.4 Process and HTTP skeleton** — 创建 `cmd/api`、Chi router、`/healthz`、版本信息、统一 JSON/error writer、request ID middleware、context-aware server timeout 和 SIGINT/SIGTERM 优雅关闭。测试 shutdown 不泄漏 goroutine。
-- [ ] **0.5 Developer commands** — 创建 Makefile/task commands：`dev/build/test/test-race/test-integration/lint/generate/migrate-*/docker-*/load-test/proto`，确保命令失败时返回非零且不吞输出。
-- [ ] **0.6 Formatting and static checks** — 配置 gofmt/goimports、golangci-lint、go vet、前端预留的 ESLint/Prettier 规则与 pre-commit 可选脚本；生成物目录正确排除。验证在空骨架通过。
-- [ ] **0.7 Local dependency baseline** — 创建最小 `docker-compose.yml` 启动 PostgreSQL，并用 healthcheck、volume、固定开发凭证与 profile 为后续 Redis/Kafka/observability 留扩展点；文档化启动/清理但不删除非本项目 volume。
+- [x] **0.1 Toolchain and decision baseline** — 确认 module path，固定 Go/Node/pnpm、PostgreSQL/Redis/Kafka、sqlc、migration、buf/protoc、golangci-lint、k6 版本；创建 `go.mod`、`.tool-versions` 或等价版本文件及 `docs/adr/0001-*`。验证：全新环境能按文档安装/检查版本。
+- [x] **0.2 Repository skeleton** — 按 Target Repository Structure 创建必要目录与最小 package（不提前创建无内容微服务），添加 `.gitignore`、`.editorconfig`、版权头/贡献约定。验证：目录职责与 imports 不形成循环依赖。
+- [x] **0.3 Configuration contract** — 在 `internal/platform/config` 实现强类型环境配置、默认值和启动校验，创建 `.env.example`；区分必填 Secret 与非敏感参数。测试缺失、非法 duration/URL、Secret 脱敏。
+- [x] **0.4 Process and HTTP skeleton** — 创建 `cmd/api`、Chi router、`/healthz`、版本信息、统一 JSON/error writer、request ID middleware、context-aware server timeout 和 SIGINT/SIGTERM 优雅关闭。测试 shutdown 不泄漏 goroutine。
+- [x] **0.5 Developer commands** — 创建 Makefile/task commands：`dev/build/test/test-race/test-integration/lint/generate/migrate-*/docker-*/load-test/proto`，确保命令失败时返回非零且不吞输出。
+- [x] **0.6 Formatting and static checks** — 配置 gofmt/goimports、golangci-lint、go vet、前端预留的 ESLint/Prettier 规则与 pre-commit 可选脚本；生成物目录正确排除。验证在空骨架通过。
+- [x] **0.7 Local dependency baseline** — 创建最小 `docker-compose.yml` 启动 PostgreSQL，并用 healthcheck、volume、固定开发凭证与 profile 为后续 Redis/Kafka/observability 留扩展点；文档化启动/清理但不删除非本项目 volume。
 
 **Acceptance Criteria**
 

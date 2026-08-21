@@ -1,0 +1,8 @@
+.tools/
+.cache/
+bin/
+coverage/
+gen/
+web/node_modules/
+web/.next/
+
